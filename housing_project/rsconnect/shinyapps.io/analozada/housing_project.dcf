@@ -1,0 +1,13 @@
+name: housing_project
+title:
+username:
+account: analozada
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6618895
+bundleId: 6086076
+url: https://analozada.shinyapps.io/housing_project/
+when: 1657487090.57598
+lastSyncTime: 1657487090.576
+asMultiple: FALSE
+asStatic: FALSE
