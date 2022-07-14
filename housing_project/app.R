@@ -23,8 +23,8 @@ library(tidyr)
 #library(tmap)    # for static and interactive maps
 #library(leaflet) # for interactive maps
 
-hvi <- read_csv(file = 'assets/Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv', col_types =c('d'))
-zori <- read_csv(file = 'assets/Metro_ZORI_AllHomesPlusMultifamily_Smoothed.csv', col_types =c('d'))
+hvi <- read_csv(file = 'assets/Zip_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv', col_types =c('d'))
+zori <- read_csv(file = 'assets/Zip_ZORI_AllHomesPlusMultifamily_Smoothed.csv', col_types =c('d'))
 merged <- full_join(hvi, zori, by='RegionID')
 merged <- rename(merged, rent = '2022-05')
 merged <- rename(merged, home_value ='2022-05-31')
@@ -57,7 +57,8 @@ server <- function(input, output) {
       
       merged %>%  
       #dplyr::filter(home_value < 500000) %>%  
-      dplyr::select(RegionName.x, home_value, rent, rtv)  %>% 
+      #dplyr::filter(City == 'Detroit') %>%  
+      dplyr::select(RegionName.x, City, State, home_value, rent, rtv)  %>% 
        drop_na() %>% arrange(-rtv) %>% top_n(1000)
       
     }, digits=2)
